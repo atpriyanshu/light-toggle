@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+:root {
+  --ff-serif: "Roboto Slab", serif;
+  --fs-400: 1.2em;
+}
+
 *,
 *::before,
 *::after {
@@ -10,6 +17,8 @@ body {
   display: grid;
   place-content: center;
   min-height: 100vh;
+  font-family: var(--ff-serif);
+  font-size: var(--fs-400);
   background-color: hsl(var(--clr-primary-400) / 0.2);
 }
 
