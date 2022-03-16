@@ -1,64 +1,19 @@
-// const col = ["orange", "dodgerblue", "red", "pink", "gold"];
+// Initial Elements
+const root = document.querySelector(":root")
+const viewer = document.querySelector(".background-viewer")
+const changer = document.querySelector(".background-changer")
 
-// async function hasLocalStorage(next, create) {
-//   let colorIndex = Number(localStorage.getItem("bg-color-index"));
-//   if (colorIndex !== null) {
-//     // next(colorIndex);
-//     Promise.resolve(colorIndex);
-//   } else {
-//     Promise.reject();
-//   }
-// };
+// Scripts
+changeBg() // bg color initilize
+viewer.addEventListener("click", changeBg)
+changer.addEventListener("click", changeBg)
 
-// // var hasLocalStorage = hasLocalStorage();
-
-// hasLocalStorage().then(
-//   function(colorIndex) {
-//     colorIndex++;
-//     colorIndex %= col.length;
-
-//     setBackground(colorIndex);
-//   },
-//   function() {
-//     let colorIndex = 0;
-//     setBackground(colorIndex);
-//   }
-// );
-
-// function setBackground(colorIndex) {
-//   document.body.style.backgroundColor = col[colorIndex];
-//   localStorage.setItem("bg-color-index", colorIndex);
-// }
-
-
-// preserved code
-const col = ["orange", "dodgerblue", "red", "pink", "gold"];
-
-// checks that local storage has 'bg-color-theme'
-var hasLocalStorage = new Promise(function (next, create) {
-  let colorIndex = Number(localStorage.getItem("bg-color-index"));
-  if (colorIndex !== null) {
-    next(colorIndex);
-  } else {
-    create();
-  }
-});
-
-// set background according 
-hasLocalStorage.then(
-  function(colorIndex) {
-    colorIndex++;
-    colorIndex %= col.length;
-
-    setBackground(colorIndex);
-  },
-  function() {
-    let colorIndex = 0;
-    setBackground(colorIndex);
-  }
-);
-
-function setBackground(colorIndex) {
-  document.body.style.backgroundColor = col[colorIndex];
-  localStorage.setItem("bg-color-index", colorIndex);
+// Functions
+function changeBg() {
+  const randomColor = 
+    `${random(360)} ${random(undefined, 50)}% ${random(undefined, 50)}%`
+  return root.style.setProperty("--clr-primary-400", randomColor) 
+}
+function random(max = 100, min = 0) {
+  return Math.floor(Math.random() * (max - min))
 }
